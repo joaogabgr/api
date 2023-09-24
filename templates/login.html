@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="../static/autenticar.css" />
+
+  
+  {% extends "template.html" %}
+  {% block conteudo %}
+  <main>
+    <section class="login">
+        <p>Entrar na minha conta</p>
+        <form action="/autenticar" method="post">
+          <input type="hidden" name="proxima" value="{{ proxima }}">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
+            <label for="password">Senha</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" name="submit" id="submit" value="Entrar">
+        </form>
+        <a href="/registrar">Não tem conta? Crie aqui</a>
+    </section>
+  </main>
+  {% endblock %}
+</body>
+
+</html>

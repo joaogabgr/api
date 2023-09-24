@@ -1,0 +1,58 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../static/global.css" />
+<script defer src="../static/Js/script.js"></script>
+<script src="https://kit.fontawesome.com/c6d943c8a3.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header>
+    <a href="/"><img src="../static/img/rim.png" alt="Logo" /></a>
+    <nav>
+        <a href="ircBrasil">IRC no Brasil</a>
+        <a href="proadi">Proadi</a>
+        <a href="comunidade">Comunidade</a>
+        <a href="faq">Perguntas frequentes</a>
+    </nav>
+    <div class="btnProfile">
+        <i class="fa-solid fa-circle-user"></i>
+        <i class="arrow fa-solid fa-chevron-down">
+            {% if 'usuario_logado' not in session or session['usuario_logado'] == None: %}
+            <div class="boxLogin">
+                <a href="registrar">Cadastrar</a>
+                <a href="login">Entrar</a>
+            </div>
+            {% else %}
+            <div class="boxLogin">
+                <p>{{ perfil.nome.title() }}</p>
+                <p>{{ perfil.email.capitalize() }}</p>
+                <hr>
+                <a class="logout" href="logout">Sair</a>
+            </div>
+            {% endif %}
+        </i>
+    </div>
+</header>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <ul id="messages" class="list-unstyled">
+    {% for message in messages %}
+        <li class="alert alert-success">{{ message }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endwith %}
+
+{% block conteudo %}
+{% endblock %}
+
+<footer>
+    <a href="/"><img src="../static/img/rimFooter.png" alt="Logo rim" /></a>
+    <p>© 2023 IRC. Todos os direitos Reservados.</p>
+    <a target="_blank" href="https://www.instagram.com/rimdoamor/">
+      <div class="sigaMe">
+        <p>SIGA-NOS</p>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+    </a>
+  </footer>

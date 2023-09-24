@@ -1,0 +1,38 @@
+:root {
+    --marginFaq: 25px;
+    --marginFonte: 15px;
+}
+
+details {
+    padding: 30px;
+    border-radius: var(--border);   
+    background-color: var(--fundo);
+    margin-bottom: var(--marginFaq);
+    box-shadow: var(--boxshadow);
+}
+
+summary {
+    all: unset;
+    font-family: Nunito Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    user-select: none; 
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+details hr {
+    margin-top: calc(var(--marginFonte) + 1px);
+}
+
+details p {
+    margin-top: var(--marginFonte);
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148.023%;
+}

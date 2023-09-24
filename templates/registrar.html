@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="../static/autenticar.css" />
+
+  
+  {% extends "template.html" %}
+  {% block conteudo %}
+  <main>
+    <section class="login">
+        <p>Cadastrar conta</p>
+        <form action="cadastrar" method="post">
+            <label for="nome">Nome</label>
+            <input type="nome" name="nome" id="nome">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
+            <label for="password">Senha</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" name="submit" id="submit" value="Criar">
+        </form>
+        <a href="/login">Já tem uma conta? Crie aqui</a>
+    </section>
+  </main>
+  {% endblock %}
+</body>
+
+</html>

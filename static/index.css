@@ -1,0 +1,76 @@
+/* CONFIG GERAIS DAS SECTIONS */
+
+:root {
+    --marginColorido: 40px 120px;
+}
+
+section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colorido {
+    background-color: var(--fundo);
+    padding: var(--marginColorido);
+}
+
+.colorido:last-child {
+    margin-bottom: 0;
+}
+
+/* TIPOGRAFIA -------------- */
+
+section p {
+    width: 100%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 35.525px */
+    text-align: justify;
+    line-height: 200%;
+}
+
+section li {
+    line-height: 150%;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+section li:last-child {
+    margin-bottom: 0px;
+}
+
+/* Primeira section */
+
+section:first-child p {
+    width: 65%;
+}
+
+section img {
+    width: 20% ;
+}
+
+/* Segunda section */
+
+section.colorido h2 {
+    color: var(--letra);
+    margin-bottom: 20px;
+}
+
+/* Terceira section */
+
+.tratamento div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+
+
+/* Ajuste na section "trienios" pagina PROADI */
+
+.trienios div {
+    flex-direction: column;
+    align-items: start;
+}

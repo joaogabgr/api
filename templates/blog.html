@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/global.css" />
+    <link rel="stylesheet" href="../static/comunidade.css" />
+
+    
+    {% extends "template.html" %}
+    {% block conteudo %}
+    <main>
+        <section>
+            <h1>COMUNIDADE</h1>
+            <p>Contribua com nossa comunidade escrevendo a história de seu filho(a)!</p>
+        </section>
+        <section class="secBanners">
+            <section class="publicar">
+                <form action="comentar" method="post">
+                    <textarea required="required" placeholder="Escreva a história do seu filho aqui" name="comentario" id="comentario"></textarea>
+                    <div>
+                        <input required="required" placeholder="Nome do seu filho" type="text" name="nome" id="nome">
+                        <input required="required" placeholder="Data de nascimento" type="text" onfocus="(this.type = 'date')" name="nascimento" id="nascimento">
+                        <input placeholder="Data do transplante" type="text" onfocus="(this.type = 'date')" value="" name="transplante" id="transplante">
+                    </div>
+                    <div>
+                        <label class="image" for="image">Enviar fotos</label>
+                        <input type="file" accept="image/*" name="image" id="image">
+                        <input type="submit" name="enviar" id="enviar">
+                    </div>
+                </form>
+            </section>
+            {% for post in posts %}
+            <div class="banner">
+                <div>
+                    <i class="fa-solid fa-user-large"></i>
+                    <p>{{ post.nome }}</p>
+                </div>
+                <div>
+                    <p>História do meu filho -</p><span class="dado">{{ post.nome_filho }}</span>
+                    <span class="line"></span>
+                    <p>Nascimento: </p><span class="dado">{{ post.nascimento }}</span>
+                    {% if post.transplante == None %}
+
+                    {% else %}
+                    <span class="line"></span>
+                    <p>Transplante: </p><span class="dado">{{ post.transplante }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    {% endblock %}
+</body>
+
+</html>
