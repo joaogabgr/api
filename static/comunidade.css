@@ -108,6 +108,7 @@ input[type='date'] {
     margin-bottom: var(--marginBanner);
     box-shadow: var(--boxshadow);
     border-left: 3px solid var(--principal);
+    cursor: pointer;
 }
 
 .banner div {
@@ -124,24 +125,23 @@ input[type='date'] {
     height: 18px;
     width: 2px;
     border-radius: var(--border);
-    background-color: var(--letra);
+    background-color: var(--principal);
     margin: var(--marginLine);
 }
 
 /* Div - Nome usuario */
 
 
-.banner div:first-child i {
-    color: var(--principal);
+.usuario i {
     background-color: white;
     padding: 10px;
     border-radius: 50%;
 }
 
-.banner div:first-child p {
+.usuario .post_nome {
     color: var(--letra);
     font-family: Nunito Sans;
-    font-size: 16px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     margin: var(--marginLine);
@@ -165,3 +165,5 @@ input[type='date'] {
     color: var(--letra);
     margin-left: 5px;
 }
+
+

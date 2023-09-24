@@ -12,44 +12,39 @@
     <main>
         <section>
             <h1>COMUNIDADE</h1>
-            <p>Contribua com nossa comunidade escrevendo a história de seu filho(a)! Para publicar é necessário efetuar
-                o login ou se cadastrar em nosso site.</p>
+            <p>Contribua com nossa comunidade escrevendo a história de seu filho(a)!</p>
         </section>
         <section class="secBanners">
-            <div class="banner">
-                <div>
-                    <i class="fa-solid fa-user-large"></i>
-                    <p>Margarida Braga dos Reis</p>
-                </div>
-                <div>
-                    <p>História do meu filho -</p><span class="dado">Vitor Daniel dos Reis da Silva</span>
-                    <span class="line"></span>
-                    <p>Nascimento: </p><span class="dado">24/02/2017</span>
-                    <span class="line"></span>
-                    <p>Transplante: </p><span class="dado">24/01/2020</span>
-                </div>
+            {% if 'usuario_logado' not in session or session['usuario_logado'] == None: %}
+
+            {% else %}
+            <div class="boxLogin">
+                <section class="publicar">
+                    <form action="comentar" method="post">
+                        <textarea required="required" placeholder="Escreva a história do seu filho aqui *   " name="comentario" id="comentario"></textarea>
+                        <div>
+                            <input required="required" placeholder="Nome do seu filho *" type="text" name="nome" id="nome">
+                            <input required="required" placeholder="Data de nascimento *" type="text" onfocus="(this.type = 'date')" name="nascimento" id="nascimento">
+                            <input placeholder="Data do transplante" type="text" onfocus="(this.type = 'date')" value="" name="transplante" id="transplante">
+                        </div>
+                        <div>
+                            <label class="image" for="image">Enviar fotos</label>
+                            <input type="file" accept="image/*" name="image" id="image">
+                            <input type="submit" name="enviar" id="enviar">
+                        </div>
+                    </form>
+                </section>
             </div>
-            <div class="banner">
-                <div>
-                    <i class="fa-solid fa-user-large"></i>
-                    <p>Margarida Braga dos Reis</p>
-                </div>
-                <div>
-                    <p>História do meu filho -</p><span class="dado">Vitor Daniel dos Reis da Silva</span>
-                    <span class="line"></span>
-                    <p>Nascimento: </p><span class="dado">24/02/2017</span>
-                    <span class="line"></span>
-                    <p>Transplante: </p><span class="dado">24/01/2020</span>
-                </div>
-            </div>
+            {% endif %}
             {% for post in posts %}
-            <div class="banner">
-                <div>
+            <form class="banner" action="/processar?q={{ post.id }}" onclick="this.submit()" method="post" >
+                <input type="hidden" name="id" id="id" value="{{ post.id }}">
+                <div class="usuario">
                     <i class="fa-solid fa-user-large"></i>
-                    <p>{{ post.nome }}</p>
+                    <p class="post_nome">{{ post.nome.title() }}</p>
                 </div>
                 <div>
-                    <p>História do meu filho -</p><span class="dado">{{ post.nome_filho }}</span>
+                    <p>História do(a):</p><span class="dado">{{ post.nome_filho.title() }}</span>
                     <span class="line"></span>
                     <p>Nascimento: </p><span class="dado">{{ post.nascimento }}</span>
                     {% if post.transplante == None %}
@@ -59,7 +54,8 @@
                     <p>Transplante: </p><span class="dado">{{ post.transplante }}</span>
                     {% endif %}
                 </div>
-            </div>
+            </form>
+
             {% endfor %}
         </section>
     </main>

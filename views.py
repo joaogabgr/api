@@ -31,10 +31,7 @@ def faq():
 @app.route('/comunidade')
 def comunidade():
     lista = Posts.query.order_by(Posts.id.desc())
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return render_template('comunidade.html', posts=lista)
-    else:
-        return render_template('blog.html', posts=lista, perfil=verificarPeril())
+    return render_template('comunidade.html', posts=lista, perfil=verificarPeril())
 
 
 @app.route('/proadi')
@@ -112,3 +109,14 @@ def comentar():
 
 
     return redirect(url_for('comunidade', perfil=verificarPeril()))
+
+@app.route('/processar', methods=['POST', 'GET'])
+def processar():
+    id = request.args.get('q')  
+    return redirect(url_for('comentario', q=id))
+
+@app.route('/comentario', methods=['POST', 'GET'])
+def comentario():
+    id = request.args.get('q')  
+    post = Posts.query.filter_by(id=id).first()
+    return render_template('comentario.html', post=post, perfil=verificarPeril())

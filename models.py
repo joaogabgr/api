@@ -13,4 +13,4 @@ class Posts(db.Model):
     transplante = db.Column(db.Date, nullable=True)
     nascimento = db.Column(db.Date, nullable=False)
     nome_filho = db.Column(db.String(255), nullable=False)
-    comentario = db.Column(db.String(550), nullable=False)
+    comentario = db.Column(db.Text, nullable=False)
