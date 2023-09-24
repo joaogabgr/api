@@ -63,12 +63,12 @@
                 <div>
                     <p>História do(a):</p><span class="dado">{{ post.nome_filho.title() }}</span>
                     <span class="line"></span>
-                    <p>Nascimento: </p><span class="dado">{{ post.nascimento }}</span>
+                    <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y')}}</span>
                     {% if post.transplante == None %}
 
                     {% else %}
                     <span class="line"></span>
-                    <p>Transplante: </p><span class="dado">{{ post.transplante }}</span>
+                    <p>Transplante: </p><span class="dado">{{ post.transplante.strftime('%d/%m/%Y') }}</span>
                     {% endif %}
                 </div>
             </form>

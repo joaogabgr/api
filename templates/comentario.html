@@ -23,7 +23,7 @@
                 <div class="info_filho">
                     <p>História do(a):</p><span class="dado">{{ post.nome_filho }}</span>
                     <span class="line"></span>
-                    <p>Nascimento: </p><span class="dado">{{ post.nascimento }}</span>
+                    <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y') }}</span>
                 </div>
                 <div class="comentario">
                     {{ post.comentario }}
