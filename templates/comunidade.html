@@ -10,14 +10,18 @@
     {% extends "template.html" %}
     {% block conteudo %}
     <main>
-        <section>
-            <h1>COMUNIDADE</h1>
-            <p>Contribua com nossa comunidade escrevendo a história de seu filho(a)!</p>
-        </section>
-        <section class="secBanners">
             {% if 'usuario_logado' not in session or session['usuario_logado'] == None: %}
-
+            <section>
+                <h1>COMUNIDADE</h1>
+                <p>Contribua com nossa comunidade escrevendo a história de seu filho(a)! Para publicar é necessário efetuar o login ou se cadastrar em nosso site.</p>
+            </section>
+            <section class="secBanners">
             {% else %}
+            <section>
+                <h1>COMUNIDADE</h1>
+                <p>Contribua com nossa comunidade escrevendo a história de seu filho(a)!</p>
+            </section>
+            <section class="secBanners">
             <div class="boxLogin">
                 <section class="publicar">
                     <form action="comentar" method="post">
@@ -30,6 +34,19 @@
                         <div>
                             <label class="image" for="image">Enviar fotos</label>
                             <input type="file" accept="image/*" name="image" id="image">
+                            <script>
+                                let image = document.getElementById('image');
+                                let label = document.querySelector('.image');
+                                image.addEventListener('change', function() {
+                                    if (image.value != '') {
+                                        label.classList.add('com_foto')
+                                        label.innerHTML = 'Foto enviada'
+                                    } else {
+                                        label.classList.remove('com_foto')
+                                        label.innerHTML = 'Enviar fotos'
+                                    }
+                                });
+                            </script>
                             <input type="submit" name="enviar" id="enviar">
                         </div>
                     </form>

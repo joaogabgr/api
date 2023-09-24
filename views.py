@@ -4,8 +4,11 @@ from models import Usuarios, Posts
 
 
 def verificarPeril():
-    perfil = Usuarios.query.filter_by(email=session['usuario_logado']).first()
-    return perfil
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return None
+    else:
+        perfil = Usuarios.query.filter_by(email=session['usuario_logado']).first()
+        return perfil
 
 @app.route('/')
 def index():
@@ -56,7 +59,7 @@ def autenticar():
                 return render_template('index.html', perfil=verificarPeril())
             else:
                 proxima_pagina = request.form['proxima']
-            return redirect(proxima_pagina, perfil=verificarPeril())
+            return render_template(f'{proxima_pagina}.html'.format(), perfil=verificarPeril())
         else:
             return redirect(url_for('login'))
     else:
@@ -79,6 +82,8 @@ def cadastrar():
     novo_user = Usuarios(email=email, nome=nome, senha=senha)
     db.session.add(novo_user)
     db.session.commit()
+
+    session['usuario_logado'] = email
 
     return redirect(url_for('index', perfil=verificarPeril()))
 

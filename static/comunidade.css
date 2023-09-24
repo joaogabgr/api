@@ -58,11 +58,12 @@ input[type='date'] {
     color: #797979;
 }
 
-.publicar #image {
+#image {
     display: none;
 }
 
-.publicar .image {
+
+.image {
     padding: 10px;
     background-color: var(--fundo);
     border: 1px solid var(--principal);
@@ -71,6 +72,12 @@ input[type='date'] {
     border-radius: var(--borderMenor);
     transition: 350ms;
     font-size: 16px;
+}
+
+.com_foto {
+    transition: 350ms;
+    background-color: var(--principal);
+    color: white;
 }
 
 .image:hover {
@@ -165,5 +172,3 @@ input[type='date'] {
     color: var(--letra);
     margin-left: 5px;
 }
-
-

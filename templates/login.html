@@ -11,7 +11,7 @@
   <main>
     <section class="login">
         <p>Entrar na minha conta</p>
-        <form action="/autenticar" method="post">
+        <form autocomplete="on" action="/autenticar" method="post">
           <input type="hidden" name="proxima" value="{{ proxima }}">
             <label for="email">E-mail</label>
             <input type="email" name="email" id="email">
