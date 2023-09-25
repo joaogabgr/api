@@ -86,6 +86,7 @@ header {
 /*Miscellaneous*/
     backdrop-filter: blur(10px);
     user-select: none;
+    z-index: 1;
 }
 
 header img {
@@ -137,6 +138,16 @@ header .user {
 
 /* BOX LOGIN */
 
+.arrow {
+    transform: rotate(0deg);
+    transition: 350ms;
+}
+
+.arrowativo {
+    transform: rotate(180deg);
+    transition: 350ms;
+}
+
 header .boxLogin {
 /*Display stuff*/
     display: none;
@@ -144,7 +155,7 @@ header .boxLogin {
     justify-content: center;
 /*Positioning stuff*/
     position: absolute;
-    right: 100px;
+    right: 105px;
     top: 80px;
 /*Box model stuff*/
     padding: 10px;

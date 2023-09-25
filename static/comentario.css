@@ -39,6 +39,7 @@
     border-radius: 50%;
     box-shadow: var(--boxshadow);
     color: var(--principal);
+    cursor: pointer;
 }
 
 /* LINHA DE NOME DO USUARIO */

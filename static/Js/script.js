@@ -4,6 +4,5 @@ let arrow = document.querySelector('.arrow')
 
 btnProfile.addEventListener('click', () => {
     popAccount.classList.toggle('ativo')
-    arrow.classList.toggle('fa-chevron-down')
-    arrow.classList.toggle('fa-chevron-up')
+    arrow.classList.toggle('arrowativo')
 })

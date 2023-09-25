@@ -44,6 +44,17 @@ TABLES['Posts'] = ('''
       foreign key (fk_email) references usuarios(email)
 )''')
 
+TABLES['Comentarios'] = ('''
+      CREATE TABLE Comentarios (
+      id INT PRIMARY KEY auto_increment,
+      fk_id INT not null,
+      nome VARCHAR(255),
+      fk_email VARCHAR(255) not null,
+      comentario LONGTEXT not null,
+      foreign key (fk_email) references posts(fk_email),
+      foreign key (fk_id) references posts(id)
+)''')
+
 for tabela_nome in TABLES:
       tabela_sql = TABLES[tabela_nome]
       try:
