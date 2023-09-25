@@ -12,11 +12,11 @@
     <section class="login">
         <p>Entrar na minha conta</p>
         <form autocomplete="on" action="/autenticar" method="post">
-          <input type="hidden" name="proxima" value="{{ proxima }}">
+          <input required="required" type="hidden" name="proxima" value="{{ proxima }}">
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
+            <input required="required" type="email" name="email" id="email">
             <label for="password">Senha</label>
-            <input type="password" name="password" id="password">
+            <input required="required" type="password" name="password" id="password">
             <input type="submit" name="submit" id="submit" value="Entrar">
         </form>
         <a href="/registrar">Não tem conta? Crie aqui</a>
