@@ -51,7 +51,7 @@ TABLES['Comentarios'] = ('''
       nome VARCHAR(255),
       fk_email VARCHAR(255) not null,
       comentario LONGTEXT not null,
-      foreign key (fk_email) references posts(fk_email),
+      foreign key (fk_email) references usuarios(email),
       foreign key (fk_id) references posts(id)
 )''')
 

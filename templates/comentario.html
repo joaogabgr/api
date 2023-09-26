@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/css/global.css" />
+    <link rel="stylesheet" href="../static/css/comentario.css" />
+
+
+    {% extends "template.html" %}
+    {% block conteudo %}
+    <main>
+        <section>
+            <div class="titulo">
+                <h1>História de {{ post.nome_filho }}</h1>
+                <i onclick="window.location = '/comunidade '" class="fa-solid fa-xmark"></i> 
+            </div>
+            <div class="banner">
+                <div class="usuario">
+                    <i class="fa-solid fa-user-large"></i>
+                    <p class="post_nome">{{ post.nome }}</p>
+                </div>
+                <div class="info_filho">
+                    <p>História do(a):</p><span class="dado">{{ post.nome_filho }}</span>
+                    <span class="line"></span>
+                    <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y') }}</span>
+                </div>
+                <div class="comentario">
+                    {{ post.comentario }}
+                </div>
+            </div>
+        </section>
+        {% if 'usuario_logado' in session and session['usuario_logado'] != None %}
+        <section>
+            <form class="comentar" action="comentar" method="post">
+                <input type="hidden" name="id" value="{{ id }}">
+                <textarea required="required" placeholder="Escreva um comentario *" name="boxcomentar" id=""></textarea>
+                <button class="enviar" type="submit">Comentar</button>
+            </form>
+        </section>
+        <section class="comentarios">
+            <div class="titulo">
+                <h3>Comentarios</h3>
+            </div>
+        {% else %}
+        <section class="comentarios">
+            <div class="titulo">
+                <h3>Comentarios</h3>
+                <p>Logue pra conseguir comentar no post</p>
+            </div>
+        {% endif %}
+            {% for comentarios in comentarios %}
+            <div class="banner bannerComentario">
+                <div class="usuario">
+                    <i class="fa-solid fa-user-large"></i>
+                    <p class="post_nome">{{ comentarios.nome }}</p>
+                </div>
+                <div class="comentario">
+                    {{ comentarios.comentario }}
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    {% endblock %}
+    </body>
+
+</html>

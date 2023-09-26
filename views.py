@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, session, flash
 from app import app, db
-from models import Usuarios, Posts
+from models import Usuarios, Posts, Comentarios
 
 
 def verificarPeril():
@@ -20,7 +20,7 @@ def ircBrasil():
 
 @app.route('/faq')
 def faq():
-    with open("docs/askFaq.txt", "r", encoding="utf-8") as arquivo:
+    with open("static/docs/askFaq.txt", "r", encoding="utf-8") as arquivo:
         texto = arquivo.readlines()
 
     askFaq = []
@@ -93,8 +93,8 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/comentar', methods=['POST', ])
-def comentar():
+@app.route('/postar', methods=['POST', ])
+def postar():
     fk_email = session['usuario_logado']
     nascimento = request.form['nascimento']
     nome_filho = request.form['nome']
@@ -124,4 +124,24 @@ def processar():
 def comentario():
     id = request.args.get('q')  
     post = Posts.query.filter_by(id=id).first()
-    return render_template('comentario.html', post=post, perfil=verificarPeril())
+
+    comentarios = Comentarios.query.filter_by(fk_id=id).all()
+    comentarios.reverse()
+
+    return render_template('comentario.html',id=id, post=post, perfil=verificarPeril(), comentarios=comentarios)
+
+@app.route('/comentar', methods=['POST',])
+def comentar():
+    fk_id = request.form['id']
+    fk_email = session['usuario_logado']
+    comentario = request.form['boxcomentar']
+
+    usuario = Usuarios.query.filter_by(email=fk_email).first()
+    nome = usuario.nome
+    
+    novo_comentario = Comentarios(fk_email=fk_email,fk_id=fk_id, nome=nome, comentario=comentario)
+
+    db.session.add(novo_comentario)
+    db.session.commit()
+    
+    return redirect(url_for('comentario', q=fk_id))
