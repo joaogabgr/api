@@ -3,8 +3,9 @@
 
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="../static/global.css" />
-    <link rel="stylesheet" href="../static/comunidade.css" />
+    <link rel="stylesheet" href="../static/css/global.css" />
+    <link rel="stylesheet" href="../static/css/comunidade.css" />
+    <script defer src="../static/Js/script.js"></script>
 
     
     {% extends "template.html" %}
@@ -24,7 +25,7 @@
             <section class="secBanners">
             <div class="boxLogin">
                 <section class="publicar">
-                    <form action="comentar" method="post">
+                    <form action="postar" method="post">
                         <textarea required="required" placeholder="Escreva a história do seu filho aqui *   " name="comentario" id="comentario"></textarea>
                         <div>
                             <input required="required" placeholder="Nome do seu filho *" type="text" name="nome" id="nome">
@@ -34,19 +35,6 @@
                         <div>
                             <label class="image" for="image">Enviar fotos</label>
                             <input type="file" accept="image/*" name="image" id="image">
-                            <script>
-                                let image = document.getElementById('image');
-                                let label = document.querySelector('.image');
-                                image.addEventListener('change', function() {
-                                    if (image.value != '') {
-                                        label.classList.add('com_foto')
-                                        label.innerHTML = 'Foto enviada'
-                                    } else {
-                                        label.classList.remove('com_foto')
-                                        label.innerHTML = 'Enviar fotos'
-                                    }
-                                });
-                            </script>
                             <input type="submit" name="enviar" id="enviar">
                         </div>
                     </form>

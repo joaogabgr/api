@@ -1,0 +1,174 @@
+:root {
+    --marginLine: 0 10px;
+    --marginBanner: 40px; 
+}
+
+/* SECTION PUBLICAR */
+
+.publicar {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fundo);
+    padding: 30px;
+    border-radius: var(--border);
+    margin-bottom: var(--marginBanner);
+    box-shadow: var(--boxshadow);
+    border-left: 3px solid var(--principal);
+}
+
+.publicar #comentario {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    resize: none;
+    border-radius: var(--border);
+    border: none;
+    padding: 10px;
+    margin-bottom: var(--marginh2);
+}
+
+#comentario:focus-visible {
+    outline: none;
+}
+
+.publicar div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--marginh2);
+}
+
+.publicar div:last-child {
+    margin-bottom: 0;
+}
+
+.publicar input {
+    border-radius: var(--borderMenor);
+    border: none;
+    padding: 5px;
+    width: 200px;
+    height: 20px;
+}
+
+.publicar input:focus-visible {
+    outline: none;
+}
+
+input[type='date'] {
+    color: #797979;
+}
+
+#image {
+    display: none;
+}
+
+
+.image {
+    padding: 10px;
+    background-color: var(--fundo);
+    border: 1px solid var(--principal);
+    color: var(--principal);
+    height: fit-content;
+    border-radius: var(--borderMenor);
+    transition: 350ms;
+    font-size: 16px;
+}
+
+.com_foto {
+    transition: 350ms;
+    background-color: var(--principal);
+    color: white;
+}
+
+.image:hover {
+    color: white;
+    background-color: var(--principal);
+    transition: 350ms;
+}
+
+.publicar #enviar {
+    cursor: pointer;
+    background-color: var(--fundo);
+    border: 1px solid var(--principal);
+    width: 210px;
+    height: 41px;
+    padding: 0px;
+    color: var(--principal);
+    transition: 350ms;
+    font-size: 16px;
+}
+
+#enviar:hover {
+    color: white;
+    background-color: var(--principal);
+    transition: 350ms;
+}
+
+/* SECTION BANNERS */
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fundo);
+    padding: 30px;
+    border-radius: var(--border);
+    margin-bottom: var(--marginBanner);
+    box-shadow: var(--boxshadow);
+    border-left: 3px solid var(--principal);
+    cursor: pointer;
+}
+
+.banner div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.banner div:last-child {
+    margin-top: 20px;
+}
+
+.line {
+    height: 18px;
+    width: 2px;
+    border-radius: var(--border);
+    background-color: var(--principal);
+    margin: var(--marginLine);
+}
+
+/* Div - Nome usuario */
+
+
+.usuario i {
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.usuario .post_nome {
+    color: var(--letra);
+    font-family: Nunito Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    margin: var(--marginLine);
+}
+
+/* Div - infos posts */
+
+.banner div:last-child p{
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: var(--letra);
+}
+
+.banner div:last-child .dado {
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--letra);
+    margin-left: 5px;
+}
