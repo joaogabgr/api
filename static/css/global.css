@@ -43,7 +43,7 @@ section {
 /* TIPOGRAFIA GERAL */
 
 h1{
-    width: 730px;
+    max-width: 1000px;
     font-family: Bebas Neue;
     font-size: 50px;
     font-style: normal;
@@ -155,7 +155,7 @@ header .boxLogin {
     justify-content: center;
 /*Positioning stuff*/
     position: absolute;
-    right: 105px;
+    right: 120px;
     top: 80px;
 /*Box model stuff*/
     padding: 10px;

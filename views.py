@@ -145,3 +145,23 @@ def comentar():
     db.session.commit()
     
     return redirect(url_for('comentario', q=fk_id))
+
+@app.route('/deletarpost', methods=['POST',])
+def deletarpost():
+    id = request.form['id']
+    post = Posts.query.filter_by(id=id).first()
+    comentario = Comentarios.query.filter_by(fk_id=id).all()
+    for i in comentario:
+        db.session.delete(i)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('comunidade', perfil=verificarPeril()))
+
+@app.route('/deletarcomentario', methods=['POST',])
+def deletarcomentario(): 
+    id = request.form['comentario.id']
+    fk_id = request.form['id']
+    comentario = Comentarios.query.filter_by(id=id).first()
+    db.session.delete(comentario)
+    db.session.commit()
+    return redirect(url_for('comentario', q=fk_id))

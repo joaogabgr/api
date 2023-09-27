@@ -23,12 +23,11 @@ section div {
 
 section p {
     width: 100%;
-    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 35.525px */
     text-align: justify;
-    line-height: 200%;
+    line-height: 220%;
+    font-size: 18px;
 }
 
 section li {
@@ -43,12 +42,22 @@ section li:last-child {
 
 /* Primeira section */
 
+.mySon div {
+    margin-top: -100px;
+}
+
+.mySon p {
+    line-height: 220%;
+    font-size: 18px;
+}
+
 section:first-child p {
     width: 65%;
+    align-self: flex-end;
 }
 
 section img {
-    width: 20% ;
+    height: 300px;
 }
 
 /* Segunda section */

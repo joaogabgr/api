@@ -50,6 +50,12 @@
     border-radius: 50%;
 }
 
+.usuario .opcoes {
+    background-color: var(--fundo);
+    margin-left: auto;
+    cursor: pointer;
+}
+
 .usuario p {
     margin-left: 10px;
     color: var(--letra);
@@ -59,7 +65,61 @@
     font-weight: 400;
 }
 
+/* OPÇOES DO COMENTARIO */
+
+.banner .boxopcoes {
+    height: 50px;
+    background-color: var(--fundo);
+    box-shadow: var(--boxshadow);
+    border: var(--border);
+    animation: fechar 350ms forwards;
+}
+
+.banner .ativo {
+    display: flex;
+    animation: abrir 350ms;
+}
+
+
+@keyframes abrir {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    
+}
+
+@keyframes fechar {
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+        display: none;
+    }
+}
+
+.boxopcoes input {
+    margin-left: 46px;
+    background-color: var(--fundo);
+    border: none;
+    font-size: 16px;
+    color: var(--principal);
+    cursor: pointer;
+}
+
+
 /* LINHA DE INFORMAÇÕES DO FILHO */
+
+.info_filho {
+    margin-left: 46px;
+}
 
 .info_filho .line {
     height: 18px;
@@ -91,6 +151,7 @@
 .comentario {
     text-align: justify;
     line-height: 150%;
+    margin-left: 46px;
 }
 
 .titulo i {

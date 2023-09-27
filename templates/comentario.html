@@ -5,6 +5,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="../static/css/global.css" />
     <link rel="stylesheet" href="../static/css/comentario.css" />
+    <script defer src="../static/Js/comentarios.js"></script>
 
 
     {% extends "template.html" %}
@@ -15,11 +16,24 @@
                 <h1>História de {{ post.nome_filho }}</h1>
                 <i onclick="window.location = '/comunidade '" class="fa-solid fa-xmark"></i> 
             </div>
+            <form action="deletarpost" method="post">
+            <input type="hidden" name="id" value="{{ id }}">
             <div class="banner">
+                {% if session['usuario_logado'] == post.fk_email %}
+                <div class="usuario">
+                    <i class="fa-solid fa-user-large"></i>
+                    <p class="post_nome">{{ post.nome }}</p>
+                    <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="boxopcoes">
+                    <input type="submit" value="Excluir post">
+                </div>
+                {% else %}
                 <div class="usuario">
                     <i class="fa-solid fa-user-large"></i>
                     <p class="post_nome">{{ post.nome }}</p>
                 </div>
+                {% endif %}
                 <div class="info_filho">
                     <p>História do(a):</p><span class="dado">{{ post.nome_filho }}</span>
                     <span class="line"></span>
@@ -29,6 +43,7 @@
                     {{ post.comentario }}
                 </div>
             </div>
+            </form>
         </section>
         {% if 'usuario_logado' in session and session['usuario_logado'] != None %}
         <section>
@@ -51,13 +66,28 @@
         {% endif %}
             {% for comentarios in comentarios %}
             <div class="banner bannerComentario">
+                <form action="deletarcomentario" method="post">
+                {% if comentarios.fk_email == session['usuario_logado'] %}
+                <div class="usuario">
+                    <input type="hidden" name="comentario.id" value="{{ comentarios.id }}">
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <i class="fa-solid fa-user-large"></i>
+                    <p class="post_nome">{{ comentarios.nome }}</p>
+                    <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="boxopcoes">
+                    <input type="submit" value="Excluir comentario" name="" id="">
+                </div>
+                {% else %}
                 <div class="usuario">
                     <i class="fa-solid fa-user-large"></i>
                     <p class="post_nome">{{ comentarios.nome }}</p>
                 </div>
+                {% endif %}
                 <div class="comentario">
                     {{ comentarios.comentario }}
                 </div>
+                </form>
             </div>
             {% endfor %}
         </section>
