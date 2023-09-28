@@ -25,7 +25,7 @@
 }
 
 body {
-    margin-top: 124px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -79,7 +79,7 @@ header {
     position: fixed;
     top: 0;
 /*Box model stuff*/
-    height: 100px;
+    height: 90px;
     padding: var(--respiro);
     border-bottom: 5px solid var(--principal);
     background-color: rgba(250, 250, 250, 0.4);
@@ -91,7 +91,7 @@ header {
 
 header img {
     width: 55px;
-    padding: 10px;
+    padding: 5px;
     border-radius: var(--border);
     box-shadow: var(--boxshadow);
     background-color: rgb(250, 250, 250);
@@ -99,7 +99,7 @@ header img {
 
 header .btnProfile {
     cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     border-radius: var(--border);
     box-shadow: var(--boxshadow);
     background-color: rgb(250, 250, 250);
@@ -122,7 +122,7 @@ header i:last-child {
 header a {
     color: var(--letra);
     margin: 0px 10px;
-    font-size: 17px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 500;
 }

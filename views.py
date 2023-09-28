@@ -10,6 +10,9 @@ def verificarPeril():
         perfil = Usuarios.query.filter_by(email=session['usuario_logado']).first()
         return perfil
 
+
+# RODAR PAGINAS HTML
+
 @app.route('/')
 def index():
     return render_template('index.html', perfil=verificarPeril())
@@ -43,6 +46,10 @@ def proadi():
         return redirect(url_for('login', proxima=url_for('proadi')))
     else:
         return render_template('proadi.html', perfil=verificarPeril())
+
+
+
+# SISTEMA DE LOGIN
 
 @app.route('/login')
 def login():
@@ -92,6 +99,8 @@ def logout():
     session['usuario_logado'] = None
     return redirect(url_for('index'))
 
+
+# FAZER POST E COMENTARIO
 
 @app.route('/postar', methods=['POST', ])
 def postar():
@@ -146,9 +155,13 @@ def comentar():
     
     return redirect(url_for('comentario', q=fk_id))
 
-@app.route('/deletarpost', methods=['POST',])
+
+
+# DELETAR POST/ COMENTARIO
+
+@app.route('/deletarpost', methods=['POST', 'GET'])
 def deletarpost():
-    id = request.form['id']
+    id = request.args.get('q')
     post = Posts.query.filter_by(id=id).first()
     comentario = Comentarios.query.filter_by(fk_id=id).all()
     for i in comentario:
@@ -156,6 +169,21 @@ def deletarpost():
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('comunidade', perfil=verificarPeril()))
+
+
+@app.route('/editarpost', methods=['POST', 'GET'])
+def editarpost():
+    id = request.form['id']
+    post = Posts.query.filter_by(id=id).first()
+    post.comentario = request.form['comentario']
+    post.nascimento = request.form['nascimento']
+    post.nome_filho = request.form['nome']
+    if request.form['transplante'] != "":
+        post.transplante = request.form['transplante']
+    else:
+        post.transplante = None
+    db.session.commit()
+    return redirect(url_for('comentario', q=id))
 
 @app.route('/deletarcomentario', methods=['POST',])
 def deletarcomentario(): 

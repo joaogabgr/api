@@ -16,7 +16,6 @@
                 <h1>História de {{ post.nome_filho }}</h1>
                 <i onclick="window.location = '/comunidade '" class="fa-solid fa-xmark"></i> 
             </div>
-            <form action="deletarpost" method="post">
             <input type="hidden" name="id" value="{{ id }}">
             <div class="banner">
                 {% if session['usuario_logado'] == post.fk_email %}
@@ -26,24 +25,43 @@
                     <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
                 </div>
                 <div class="boxopcoes">
-                    <input type="submit" value="Excluir post">
+                    <a href="deletarpost?q={{ post.id }}">Excluir post</a>
+                    <a href="editarpost?q={{ post.id }}">Editar post</a>
                 </div>
+                <form action="editarpost" method="post" class="boxeditarpost">
+                    <h2>Editar publicação</h2>
+                    <textarea name="comentario" id="comentario">{{ post.comentario }}</textarea>
+                    <input type="hidden" name="id" value="{{ post.id }}">
+                    <input required="required" type="text" name="nome" id="nome" value="{{ post.nome_filho }}">
+                    <input required="required" type="date" value="{{ post.nascimento }}" name="nascimento" id="nascimento">
+                    <input placeholder="Data do transplante" type="date" value="{{ post.transplante }}" name="transplante" id="transplante">
+                    <input type="submit">
+                </form>
                 {% else %}
                 <div class="usuario">
                     <i class="fa-solid fa-user-large"></i>
                     <p class="post_nome">{{ post.nome }}</p>
                 </div>
                 {% endif %}
+                {% if post.transplante == None %}
                 <div class="info_filho">
                     <p>História do(a):</p><span class="dado">{{ post.nome_filho }}</span>
                     <span class="line"></span>
                     <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y') }}</span>
                 </div>
+                {% else %}
+                <div class="info_filho">
+                    <p>História do(a):</p><span class="dado">{{ post.nome_filho }}</span>
+                    <span class="line"></span>
+                    <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y') }}</span>
+                    <span class="line"></span>
+                    <p>Transplante: </p><span class="dado">{{ post.transplante.strftime('%d/%m/%Y') }}</span>
+                </div>
+                {% endif %}
                 <div class="comentario">
                     {{ post.comentario }}
                 </div>
             </div>
-            </form>
         </section>
         {% if 'usuario_logado' in session and session['usuario_logado'] != None %}
         <section>

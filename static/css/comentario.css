@@ -105,7 +105,7 @@
     }
 }
 
-.boxopcoes input {
+.boxopcoes .editarpost {
     margin-left: 46px;
     background-color: var(--fundo);
     border: none;
@@ -114,6 +114,17 @@
     cursor: pointer;
 }
 
+.boxeditarpost {
+    width: 50%;
+    height: 50%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fundo);
+    align-self: center;
+    padding: 30px;
+    border-radius: var(--border);
+}
 
 /* LINHA DE INFORMAÇÕES DO FILHO */
 
