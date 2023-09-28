@@ -68,9 +68,11 @@ def autenticar():
                 proxima_pagina = request.form['proxima']
             return render_template(f'{proxima_pagina}.html'.format(), perfil=verificarPeril())
         else:
+            flash('A senha inserida esta incorreta. Por favor, tente novamente.')
             return redirect(url_for('login'))
     else:
-        return redirect(url_for('login'))
+        flash('O email inserido não está associado a uma conta. Por favor, verifique o email ou crie uma nova conta.')
+        return redirect(url_for('registrar'))
 
 
 @app.route('/registrar')
@@ -84,6 +86,7 @@ def cadastrar():
     senha = request.form['password']
 
     if Usuarios.query.filter_by(email=email).first():
+        flash('O email inserido já está associado a uma conta existente. Por favor, faça login.')
         return redirect(url_for('login', perfil=verificarPeril()))
     
     novo_user = Usuarios(email=email, nome=nome, senha=senha)
@@ -91,7 +94,6 @@ def cadastrar():
     db.session.commit()
 
     session['usuario_logado'] = email
-
     return redirect(url_for('index', perfil=verificarPeril()))
 
 @app.route('/logout')

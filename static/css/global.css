@@ -24,6 +24,14 @@
     --boxshadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
+#messages {
+    align-self: center;
+    margin: 30px;
+    color: var(--principal);
+    font-size: 20px;
+    list-style: none;
+}
+
 body {
     margin-top: 100px;
     display: flex;
