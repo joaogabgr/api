@@ -42,11 +42,11 @@ section li:last-child {
 
 /* Primeira section */
 
-.mySon div {
+.mySon div , .proadi div {
     margin-top: -100px;
 }
 
-.mySon p {
+.mySon p, .proadi p {
     line-height: 220%;
     font-size: 18px;
 }

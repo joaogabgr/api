@@ -68,16 +68,29 @@
 /* OPÇOES DO COMENTARIO */
 
 .banner .boxopcoes {
-    height: 50px;
+    display: none;
     background-color: var(--fundo);
     box-shadow: var(--boxshadow);
     border: var(--border);
+    margin-left: 46px;
+    user-select: none;
+}
+
+.banner .desativado {
+    display: flex;
     animation: fechar 350ms forwards;
 }
 
 .banner .ativo {
     display: flex;
     animation: abrir 350ms;
+}
+
+.banner .opcoesBtn {
+    color: var(--principal);
+    align-self: start;
+    padding: 10px;
+    cursor: pointer; 
 }
 
 
@@ -108,22 +121,80 @@
 .boxopcoes .editarpost {
     margin-left: 46px;
     background-color: var(--fundo);
-    border: none;
     font-size: 16px;
     color: var(--principal);
     cursor: pointer;
 }
 
+
+/* BOX DE IDIÇÕES */
+
 .boxeditarpost {
     width: 50%;
-    height: 50%;
     position: fixed;
-    display: flex;
+    display: none;
     flex-direction: column;
     background-color: var(--fundo);
     align-self: center;
+    justify-self: top;
     padding: 30px;
     border-radius: var(--border);
+    box-shadow: var(--boxshadow);
+    top: 200px;
+}
+
+.boxeditarpost.ativo {
+    display: flex;
+}
+
+.boxeditarpost .titulo h2{
+    margin-bottom: 0;
+}
+
+.boxeditarpost .label {
+    margin-bottom: 0;
+}
+
+.boxeditarpost label, input {
+    width: 25%;
+    align-self: flex-start;
+    padding: 5px;
+}
+
+.boxeditarpost div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--marginh2);
+}
+
+.boxeditarpost input {
+    border-radius: var(--borderMenor);
+    border: none;
+    height: 20px;
+}
+
+.boxeditarpost input:focus-visible {
+    outline: none;
+}
+
+.boxeditarpost #enviar {
+    cursor: pointer;
+    background-color: var(--fundo);
+    border: 1px solid var(--principal);
+    width: calc(25% + 10px);
+    height: 41px;
+    padding: 0px;
+    color: var(--principal);
+    transition: 350ms;
+    font-size: 16px;
+    align-self: flex-end;
+}
+
+.boxeditarpost #enviar:hover {
+    color: white;
+    background-color: var(--principal);
+    transition: 350ms;
 }
 
 /* LINHA DE INFORMAÇÕES DO FILHO */

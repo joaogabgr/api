@@ -14,7 +14,7 @@
         <section>
             <div class="titulo">
                 <h1>História de {{ post.nome_filho }}</h1>
-                <i onclick="window.location = '/comunidade '" class="fa-solid fa-xmark"></i> 
+                <i onclick="window.location = '/comunidade '" class="fa-solid fa-xmark"></i>
             </div>
             <input type="hidden" name="id" value="{{ id }}">
             <div class="banner">
@@ -25,17 +25,30 @@
                     <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
                 </div>
                 <div class="boxopcoes">
-                    <a href="deletarpost?q={{ post.id }}">Excluir post</a>
-                    <a href="editarpost?q={{ post.id }}">Editar post</a>
+                    <a class="opcoesBtn" href="deletarpost?q={{ post.id }}">Excluir post</a>
+                    <p class="opcoesBtn editarBtn">Editar post</p>
                 </div>
                 <form action="editarpost" method="post" class="boxeditarpost">
-                    <h2>Editar publicação</h2>
+                    <div class="titulo">
+                        <h2>Editar publicação</h2> 
+                        <i class="opcoesFechar fa-solid fa-xmark"></i>
+                    </div>
                     <textarea name="comentario" id="comentario">{{ post.comentario }}</textarea>
-                    <input type="hidden" name="id" value="{{ post.id }}">
-                    <input required="required" type="text" name="nome" id="nome" value="{{ post.nome_filho }}">
-                    <input required="required" type="date" value="{{ post.nascimento }}" name="nascimento" id="nascimento">
-                    <input placeholder="Data do transplante" type="date" value="{{ post.transplante }}" name="transplante" id="transplante">
-                    <input type="submit">
+                    <div class="label">
+                        <label for="nome">Nome do filho:</label>
+                        <label for="nascimento">Data de nascimento:</label>
+                        <label for="transplante">Data do transplante:</label>
+                    </div>
+                    <div>
+                        <input type="hidden" name="id" value="{{ post.id }}">
+                        
+                        <input required="required" type="text" name="nome" id="nome" value="{{ post.nome_filho }}">
+                        
+                        <input required="required" type="date" value="{{ post.nascimento }}" name="nascimento" id="nascimento">
+                        
+                        <input placeholder="Data do transplante" type="date" value="{{ post.transplante }}" name="transplante" id="transplante">
+                    </div>
+                    <input id="enviar" type="submit">
                 </form>
                 {% else %}
                 <div class="usuario">
@@ -45,7 +58,7 @@
                 {% endif %}
                 {% if post.transplante == None %}
                 <div class="info_filho">
-                    <p>História do(a):</p><span class="dado">{{ post.nome_filho }}</span>
+                    <p>História do(a):</p><span class="dado">{{ post.nome_filho.title() }}</span>
                     <span class="line"></span>
                     <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y') }}</span>
                 </div>
@@ -75,40 +88,52 @@
             <div class="titulo">
                 <h3>Comentarios</h3>
             </div>
-        {% else %}
-        <section class="comentarios">
-            <div class="titulo">
-                <h3>Comentarios</h3>
-                <p>Logue pra conseguir comentar no post</p>
-            </div>
-        {% endif %}
-            {% for comentarios in comentarios %}
-            <div class="banner bannerComentario">
-                <form action="deletarcomentario" method="post">
-                {% if comentarios.fk_email == session['usuario_logado'] %}
-                <div class="usuario">
-                    <input type="hidden" name="comentario.id" value="{{ comentarios.id }}">
-                    <input type="hidden" name="id" value="{{ id }}">
-                    <i class="fa-solid fa-user-large"></i>
-                    <p class="post_nome">{{ comentarios.nome }}</p>
-                    <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
-                </div>
-                <div class="boxopcoes">
-                    <input type="submit" value="Excluir comentario" name="" id="">
-                </div>
-                {% else %}
-                <div class="usuario">
-                    <i class="fa-solid fa-user-large"></i>
-                    <p class="post_nome">{{ comentarios.nome }}</p>
+            {% else %}
+            <section class="comentarios">
+                <div class="titulo">
+                    <h3>Comentarios</h3>
+                    <p>Logue pra conseguir comentar no post</p>
                 </div>
                 {% endif %}
-                <div class="comentario">
-                    {{ comentarios.comentario }}
+                {% for comentarios in comentarios %}
+                <div class="banner bannerComentario">
+                        {% if comentarios.fk_email == session['usuario_logado'] %}
+                        <div class="usuario">
+                            <input type="hidden" name="comentario.id" value="{{ comentarios.id }}">
+                            <input type="hidden" name="id" value="{{ id }}">
+                            <i class="fa-solid fa-user-large"></i>
+                            <p class="post_nome">{{ comentarios.nome }}</p>
+                            <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="boxopcoes">
+                            <a class="opcoesBtn" href="deletarcomentario?q={{ comentarios.id }}">Excluir post</a>
+                            <p class="opcoesBtn editarBtn">Editar post</p>
+                        </div>
+                        <form action="editarcomentario" method="post" class="boxeditarpost">
+                            <div class="titulo">
+                                <h2>Editar publicação</h2> 
+                                <i class="opcoesFechar fa-solid fa-xmark"></i>
+                            </div>
+                            <div class="label">
+                                <label for="comentario">Comentario:</label>
+                            </div>
+                            <input type="hidden" name="id" value="{{ post.id }}">
+                            <input type="hidden" name="comentario.id" value="{{ comentarios.id }}">
+                            <textarea name="comentario" id="comentario">{{ comentarios.comentario }}</textarea>
+                            <input id="enviar" type="submit">
+                        </form>
+                        {% else %}
+                        <div class="usuario">
+                            <i class="fa-solid fa-user-large"></i>
+                            <p class="post_nome">{{ comentarios.nome }}</p>
+                        </div>
+                        {% endif %}
+                        <div class="comentario">
+                            {{ comentarios.comentario }}
+                        </div>
                 </div>
-                </form>
-            </div>
-            {% endfor %}
-        </section>
+                {% endfor %}
+            </section>
     </main>
     {% endblock %}
     </body>

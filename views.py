@@ -193,3 +193,12 @@ def deletarcomentario():
     db.session.delete(comentario)
     db.session.commit()
     return redirect(url_for('comentario', q=fk_id))
+
+@app.route('/editarcomentario', methods=['POST', 'GET'])
+def editarcomentario():
+    id = request.form['comentario.id']
+    fk_id = request.form['id']
+    comentario = Comentarios.query.filter_by(id=id).first()
+    comentario.comentario = request.form['comentario']
+    db.session.commit()
+    return redirect(url_for('comentario', q=fk_id))
