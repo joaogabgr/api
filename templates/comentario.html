@@ -18,7 +18,7 @@
             </div>
             <input type="hidden" name="id" value="{{ id }}">
             <div class="banner">
-                {% if session['usuario_logado'] == post.fk_email or perfil.admin == True %}
+                {% if post.fk_email == session['usuario_logado'] or perfil.admin == True %}
                 <div class="usuario">
                     <i class="fa-solid fa-user-large"></i>
                     <p class="post_nome">{{ post.nome }}</p>

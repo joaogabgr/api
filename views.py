@@ -211,10 +211,7 @@ def editarpost():
 
 @app.route('/deletarcomentario', methods=['POST', "GET"])
 def deletarcomentario(): 
-    if request.args.get('proximo') != 'admin':
-        id = request.form['comentario.id']
-    else:
-        id = request.args.get('q')
+    id = request.args.get('q')
     comentario = Comentarios.query.filter_by(id=id).first()
     fk_id = comentario.fk_id
     db.session.delete(comentario)
