@@ -7,8 +7,7 @@ def verificarPeril():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
         return None
     else:
-        perfil = Usuarios.query.filter_by(email=session['usuario_logado']).first()
-        return perfil
+        return Usuarios.query.filter_by(email=session['usuario_logado']).first()
 
 
 # RODAR PAGINAS HTML
@@ -47,7 +46,24 @@ def proadi():
     else:
         return render_template('proadi.html', perfil=verificarPeril())
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html', perfil=verificarPeril())
 
+@app.route('/administrar', methods=['POST',])
+def administrar():
+    usuario = Usuarios.query.filter_by(email=request.form['email']).first()
+    if usuario:
+        if usuario.admin == True:
+            flash('O usuário já é um administrador.')
+            return render_template('admin.html', perfil=verificarPeril())
+        usuario.admin = True
+        db.session.commit()
+        flash('O usuário foi promovido a administrador com sucesso!')
+        return render_template('admin.html', perfil=verificarPeril())
+    else:
+        flash('O email inserido não está associado a uma conta. Por favor, verifique o email.')
+        return render_template('admin.html', perfil=verificarPeril())
 
 # SISTEMA DE LOGIN
 
@@ -84,12 +100,13 @@ def cadastrar():
     email = request.form['email']
     nome = request.form['nome']
     senha = request.form['password']
+    admin = True
 
     if Usuarios.query.filter_by(email=email).first():
         flash('O email inserido já está associado a uma conta existente. Por favor, faça login.')
         return redirect(url_for('login', perfil=verificarPeril()))
     
-    novo_user = Usuarios(email=email, nome=nome, senha=senha)
+    novo_user = Usuarios(email=email, nome=nome, senha=senha, admin=admin)
     db.session.add(novo_user)
     db.session.commit()
 

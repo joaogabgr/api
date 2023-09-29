@@ -1,0 +1,44 @@
+section form {
+    background-color: var(--fundo);
+    box-shadow: var(--boxshadow);
+    border-radius: var(--border);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+section form label {
+    margin-bottom: 5px;
+}
+
+section form input {
+    border-radius: var(--borderMenor);
+    border: none;
+    height: 20px;
+    width: 25%;
+    padding: 5px;
+    margin-bottom: var(--marginh2);
+}
+
+section form input:focus-visible {
+    outline: none;
+}
+
+section form #enviar {
+    cursor: pointer;
+    background-color: var(--fundo);
+    border: 1px solid var(--principal);
+    width: calc(25% + 10px);
+    height: 41px;
+    padding: 0px;
+    color: var(--principal);
+    transition: 350ms;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+section form #enviar:hover {
+    color: white;
+    background-color: var(--principal);
+    transition: 350ms;
+}

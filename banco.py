@@ -29,7 +29,8 @@ TABLES['Usuarios'] = ('''
       CREATE TABLE `usuarios` (
       email VARCHAR(255) PRIMARY KEY,
       nome VARCHAR(255) not null,
-      senha VARCHAR(255) not null
+      senha VARCHAR(255) not null,
+      admin BOOLEAN not null                
 )''')
 
 TABLES['Posts'] = ('''

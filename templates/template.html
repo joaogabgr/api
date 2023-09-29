@@ -22,6 +22,14 @@
             <a href="registrar">Cadastrar</a>
             <a href="login">Entrar</a>
         </div>
+            {% elif perfil.admin == True %}
+        <div class="boxLogin">
+            <p>{{ perfil.nome.title() }}</p>
+            <p>{{ perfil.email.capitalize() }}</p>
+            <hr>
+            <a class="logout" href="admin">Painel de administradores</a>
+            <a class="logout" href="logout">Sair</a>
+        </div>
             {% else %}
         <div class="boxLogin">
             <p>{{ perfil.nome.title() }}</p>

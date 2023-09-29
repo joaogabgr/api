@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/css/global.css" />
+    <link rel="stylesheet" href="../static/css/admin.css" />
+    <script defer src="../static/Js/comunidade.js"></script>
+
+
+    {% extends "template.html" %}
+    {% block conteudo %}
+    <main>
+        <section>
+            <form action="administrar" method="post">
+                <h2>Adicionar novos administradores</h2>
+                <label for="email">Digite o email do usuario:</label>
+                <input type="email" name="email" id="email" required="required">
+                <input id="enviar" type="submit">
+            </form>
+        </section>
+
+    </main>
+    {% endblock %}
+    </body>
+
+</html>
