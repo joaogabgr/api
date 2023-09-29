@@ -42,6 +42,7 @@ TABLES['Posts'] = ('''
       nascimento DATE not null,
       nome_filho VARCHAR(255) not null,
       comentario LONGTEXT not null,
+      denuncia BOOLEAN default false,
       foreign key (fk_email) references usuarios(email)
 )''')
 
@@ -52,6 +53,7 @@ TABLES['Comentarios'] = ('''
       nome VARCHAR(255),
       fk_email VARCHAR(255) not null,
       comentario LONGTEXT not null,
+      denuncia BOOLEAN default false,
       foreign key (fk_email) references usuarios(email),
       foreign key (fk_id) references posts(id)
 )''')
@@ -70,6 +72,14 @@ for tabela_nome in TABLES:
             print('OK')
 
 # commitando se não nada tem efeito
+conn.commit()
+
+
+# inserindo usuarios PADRAO -- COLOQUE SUAS INFORMAÇÕES AQUI
+usuario_sql = 'INSERT INTO Usuarios (email, nome, senha, admin) VALUES (%s, %s, %s, %s)'
+usuarios = ("padrao@padrao.com", "padrao", "padrao", "1")
+cursor.execute(usuario_sql, usuarios)
+
 conn.commit()
 
 cursor.close()

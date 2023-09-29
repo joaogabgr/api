@@ -11,7 +11,7 @@
     {% extends "template.html" %}
     {% block conteudo %}
     <main>
-        <section>
+        <section class="admin">
             <form action="administrar" method="post">
                 <h2>Adicionar novos administradores</h2>
                 <label for="email">Digite o email do usuario:</label>
@@ -19,7 +19,42 @@
                 <input id="enviar" type="submit">
             </form>
         </section>
-
+        <section class="denunciaSec">
+            <h2>Denuncias em posts</h2>
+            {% if posts == []%}
+            <p>Não há denuncias em publicações</p>
+            {% else %}
+            {% for denuncia in posts %}
+            <div class="denuncia">
+                <h3>Post do {{ denuncia.nome }}</h3>
+                <p>Comentario:</p>
+                <p class="comentario">{{denuncia.comentario}}</p>
+                <div>
+                    <a href="deletarpost?q={{ denuncia.id }}&proximo=admin">Excluir post</a>
+                    <a href="desdenunciarpost?q={{ denuncia.id }}">Excluir denuncia</a>
+                </div>
+            </div>
+            {% endfor%}
+            {% endif %}
+        </section>
+        <section class="denunciaSec">
+            <h2>Denuncias em comentarios</h2>
+            {% if comentario == []%}
+            <p>Não há denuncias em comentarios</p>
+            {% else %}
+            {% for denuncia in comentario %}
+            <div class="denuncia">
+                <h3>Post do {{ denuncia.nome }}</h3>
+                <p>Comentario:</p>
+                <p class="comentario">{{denuncia.comentario}}</p>
+                <div>
+                    <a action="post" href="deletarcomentario?q={{ denuncia.id }}&proximo=admin">Excluir comentario</a>
+                    <a href="desdenunciarcomentario?q={{ denuncia.id }}">Excluir denuncia</a>
+                </div>
+            </div>
+            {% endfor%}
+            {% endif %}
+        </section>
     </main>
     {% endblock %}
     </body>

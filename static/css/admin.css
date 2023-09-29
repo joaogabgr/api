@@ -1,4 +1,4 @@
-section form {
+.admin form {
     background-color: var(--fundo);
     box-shadow: var(--boxshadow);
     border-radius: var(--border);
@@ -7,11 +7,11 @@ section form {
     flex-direction: column;
 }
 
-section form label {
+.admin form label {
     margin-bottom: 5px;
 }
 
-section form input {
+.admin form input {
     border-radius: var(--borderMenor);
     border: none;
     height: 20px;
@@ -20,11 +20,11 @@ section form input {
     margin-bottom: var(--marginh2);
 }
 
-section form input:focus-visible {
+.admin form input:focus-visible {
     outline: none;
 }
 
-section form #enviar {
+.admin form #enviar {
     cursor: pointer;
     background-color: var(--fundo);
     border: 1px solid var(--principal);
@@ -37,7 +37,64 @@ section form #enviar {
     align-self: flex-start;
 }
 
-section form #enviar:hover {
+.admin form #enviar:hover {
+    color: white;
+    background-color: var(--principal);
+    transition: 350ms;
+}
+
+/* Denuncias */
+
+.denunciaSec .denuncia {
+    background-color: var(--fundo);
+    box-shadow: var(--boxshadow);
+    border-radius: var(--border);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--marginh2);
+}
+
+.denunciaSec .denuncia:last-child {
+    margin-bottom: 0px;
+}
+
+.denuncia p{
+    font-style: normal;
+    font-weight: 400;
+    text-align: justify;
+    font-size: 19px;
+}
+
+.denuncia .comentario {
+    width: max-content;
+    color: var(--principal);
+    margin-left: 10px;
+}
+
+.denuncia div {
+    display: flex;
+    align-items: center;
+}
+
+.denuncia div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--fundo);
+    border: 1px solid var(--principal);
+    border-radius: var(--borderMenor);
+    width: calc(25% + 10px);
+    height: 41px;
+    color: var(--principal);
+    transition: 350ms;
+    font-size: 16px;
+    align-self: flex-start;
+    margin: 20px 10px 0px 0px;
+}
+
+.denuncia div a:hover {
     color: white;
     background-color: var(--principal);
     transition: 350ms;

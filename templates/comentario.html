@@ -22,7 +22,10 @@
                 <div class="usuario">
                     <i class="fa-solid fa-user-large"></i>
                     <p class="post_nome">{{ post.nome }}</p>
-                    <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                    <div class="option">
+                        <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                        <a href="denunciarpost?q={{ post.id }}"><i class="fa-solid fa-triangle-exclamation"></i></a>
+                    </div>
                 </div>
                 <div class="boxopcoes">
                     <a class="opcoesBtn" href="deletarpost?q={{ post.id }}">Excluir post</a>
@@ -103,15 +106,18 @@
                             <input type="hidden" name="id" value="{{ id }}">
                             <i class="fa-solid fa-user-large"></i>
                             <p class="post_nome">{{ comentarios.nome }}</p>
-                            <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                            <div class="option">
+                                <i class="opcoes fa-solid fa-ellipsis-vertical"></i>
+                                <a href="denunciarcomentario?q={{ comentarios.id }}"><i class="fa-solid fa-triangle-exclamation"></i></a>
+                            </div>
                         </div>
                         <div class="boxopcoes">
                             <a class="opcoesBtn" href="deletarcomentario?q={{ comentarios.id }}">Excluir post</a>
-                            <p class="opcoesBtn editarBtn">Editar post</p>
+                            <p class="opcoesBtn editarBtn">Editar comentario</p>
                         </div>
                         <form action="editarcomentario" method="post" class="boxeditarpost">
                             <div class="titulo">
-                                <h2>Editar publicação</h2> 
+                                <h2>Editar comentario</h2> 
                                 <i class="opcoesFechar fa-solid fa-xmark"></i>
                             </div>
                             <div class="label">

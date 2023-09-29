@@ -50,9 +50,12 @@
     border-radius: 50%;
 }
 
-.usuario .opcoes {
-    background-color: var(--fundo);
+.usuario .option {
     margin-left: auto;
+}
+
+.usuario .option i {
+    background-color: var(--fundo);
     cursor: pointer;
 }
 

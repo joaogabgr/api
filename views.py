@@ -42,13 +42,16 @@ def comunidade():
 @app.route('/proadi')
 def proadi():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        flash('Necessário estar logado para acessar a página.')
         return redirect(url_for('login', proxima=url_for('proadi')))
     else:
         return render_template('proadi.html', perfil=verificarPeril())
 
 @app.route('/admin')
 def admin():
-    return render_template('admin.html', perfil=verificarPeril())
+    postsdenuncia = Posts.query.filter_by(denuncia=True).all()
+    comentariosdenuncia = Comentarios.query.filter_by(denuncia=True).all()
+    return render_template('admin.html', posts=postsdenuncia, comentario=comentariosdenuncia, perfil=verificarPeril())
 
 @app.route('/administrar', methods=['POST',])
 def administrar():
@@ -104,14 +107,14 @@ def cadastrar():
 
     if Usuarios.query.filter_by(email=email).first():
         flash('O email inserido já está associado a uma conta existente. Por favor, faça login.')
-        return redirect(url_for('login', perfil=verificarPeril()))
+        return redirect(url_for('login'))
     
     novo_user = Usuarios(email=email, nome=nome, senha=senha, admin=admin)
     db.session.add(novo_user)
     db.session.commit()
 
     session['usuario_logado'] = email
-    return redirect(url_for('index', perfil=verificarPeril()))
+    return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
@@ -141,7 +144,7 @@ def postar():
     db.session.commit()
 
 
-    return redirect(url_for('comunidade', perfil=verificarPeril()))
+    return redirect(url_for('comunidade'))
 
 @app.route('/processar', methods=['POST', 'GET'])
 def processar():
@@ -187,7 +190,9 @@ def deletarpost():
         db.session.delete(i)
     db.session.delete(post)
     db.session.commit()
-    return redirect(url_for('comunidade', perfil=verificarPeril()))
+    if request.args.get('proximo') == 'admin':
+        return redirect(url_for('admin'))
+    return redirect(url_for('comunidade'))
 
 
 @app.route('/editarpost', methods=['POST', 'GET'])
@@ -204,13 +209,17 @@ def editarpost():
     db.session.commit()
     return redirect(url_for('comentario', q=id))
 
-@app.route('/deletarcomentario', methods=['POST',])
+@app.route('/deletarcomentario', methods=['POST', "GET"])
 def deletarcomentario(): 
-    id = request.form['comentario.id']
-    fk_id = request.form['id']
+    if request.args.get('proximo') != 'admin':
+        id = request.form['comentario.id']
+    else:
+        id = request.args.get('q')
     comentario = Comentarios.query.filter_by(id=id).first()
+    fk_id = comentario.fk_id
     db.session.delete(comentario)
     db.session.commit()
+    if request.args.get('proximo') == 'admin': return redirect(url_for('admin'))
     return redirect(url_for('comentario', q=fk_id))
 
 @app.route('/editarcomentario', methods=['POST', 'GET'])
@@ -221,3 +230,49 @@ def editarcomentario():
     comentario.comentario = request.form['comentario']
     db.session.commit()
     return redirect(url_for('comentario', q=fk_id))
+
+# DENUNCIAR POST / COMENTARIO
+
+@app.route('/denunciarpost', methods=['POST', 'GET'])
+def denunciarpost():
+    id = request.args.get('q')
+    post = Posts.query.filter_by(id=id).first()
+    if post.denuncia:
+        flash('A publicação já foi denunciada anteriormente!')
+        return redirect(url_for('comentario', q=id))
+    post.denuncia = True
+    db.session.commit()
+    flash('A publicação foi denunciado com sucesso!')
+    return redirect(url_for('comentario', q=id))
+
+@app.route('/denunciarcomentario', methods=['POST', 'GET'])
+def denunciarcomentario():
+    id = request.args.get('q')
+    comentario = Comentarios.query.filter_by(id=id).first()
+    if comentario.denuncia:
+        flash('O comentário já foi denunciado anteriormente!')
+        return redirect(url_for('comentario', q=comentario.fk_id))
+    comentario.denuncia = True
+    db.session.commit()
+    flash('O comentário foi denunciado com sucesso!')
+    return redirect(url_for('comentario', q=comentario.fk_id))
+
+# DESDENUNCIAR POST / COMENTARIO
+
+@app.route('/desdenunciarpost', methods=['POST', 'GET'])
+def desdenunciarpost():
+    flash('Foi retirado a denuncia da publicação com sucesso!')
+    id = request.args.get('q')
+    post = Posts.query.filter_by(id=id).first()
+    post.denuncia = False
+    db.session.commit()
+    return redirect(url_for('admin'))
+
+@app.route('/desdenunciarcomentario', methods=['POST', 'GET'])
+def desdenunciarcomentario():
+    flash('Foi retirado a denuncia do comentario com sucesso!')
+    id = request.args.get('q')
+    comentario = Comentarios.query.filter_by(id=id).first()
+    comentario.denuncia = False
+    db.session.commit()
+    return redirect(url_for('admin'))

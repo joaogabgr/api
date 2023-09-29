@@ -14,6 +14,7 @@ class Posts(db.Model):
     nascimento = db.Column(db.Date, nullable=False)
     nome_filho = db.Column(db.String(255), nullable=False)
     comentario = db.Column(db.Text, nullable=False)
+    denuncia = db.Column(db.Boolean, default=False)
 
 class Comentarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,3 +22,4 @@ class Comentarios(db.Model):
     fk_id = db.Column(db.Integer, nullable=False)
     nome = db.Column(db.String(255), nullable=True)
     comentario = db.Column(db.Text, nullable=False)
+    denuncia = db.Column(db.Boolean, default=False)
