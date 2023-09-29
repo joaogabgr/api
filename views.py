@@ -100,7 +100,7 @@ def cadastrar():
     email = request.form['email']
     nome = request.form['nome']
     senha = request.form['password']
-    admin = True
+    admin = False
 
     if Usuarios.query.filter_by(email=email).first():
         flash('O email inserido já está associado a uma conta existente. Por favor, faça login.')
