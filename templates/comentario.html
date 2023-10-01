@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/global.css" />
     <link rel="stylesheet" href="../static/css/comentario.css" />
     <script defer src="../static/Js/comentarios.js"></script>
+    <script defer src="../static/Js/comunidade.js"></script>
 
 
     {% extends "template.html" %}
@@ -28,10 +29,10 @@
                     </div>
                 </div>
                 <div class="boxopcoes">
-                    <a class="opcoesBtn" href="deletarpost?q={{ post.id }}">Excluir post</a>
+                    <a class="opcoesBtn" href="deletarpost?q={{ post.id }}"><p>Excluir post</p></a>
                     <p class="opcoesBtn editarBtn">Editar post</p>
                 </div>
-                <form action="editarpost" method="post" class="boxeditarpost">
+                <form action="editarpost" method="post" class="boxeditarpost" enctype="multipart/form-data" >
                     <div class="titulo">
                         <h2>Editar publicação</h2>
                         <i class="opcoesFechar fa-solid fa-xmark"></i>
@@ -53,7 +54,11 @@
                         <input placeholder="Data do transplante" type="date" value="{{ post.transplante }}"
                             name="transplante" id="transplante">
                     </div>
-                    <input id="enviar" type="submit">
+                    <div class="publicarEnviar">
+                        <label class="image" for="image">Enviar fotos</label>
+                        <input type="file" accept="image/*" name="image" id="image">
+                        <input type="submit" name="enviar" id="enviar">
+                    </div>
                 </form>
                 {% else %}
                 <div class="usuario">
@@ -81,6 +86,11 @@
                         {{ post.comentario }}
                     </p>
                 </div>
+                {% if post.imagem != None %}
+                <div class="imagem">
+                   <img src="data:image/png;base64,{{ post.imagem.decode('utf-8') }}" alt="Imagem do filho"> 
+                </div>
+                {% endif %}
             </div>
         </section>
         {% if 'usuario_logado' in session and session['usuario_logado'] != None %}

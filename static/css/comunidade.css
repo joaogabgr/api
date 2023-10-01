@@ -55,7 +55,7 @@
 }
 
 input[type='date'] {
-    color: #797979;
+    color: var(--letra);
 }
 
 #image {

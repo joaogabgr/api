@@ -43,6 +43,7 @@ TABLES['Posts'] = ('''
       nome_filho VARCHAR(255) not null,
       comentario LONGTEXT not null,
       denuncia BOOLEAN default false,
+      imagem LONGBLOB,
       foreign key (fk_email) references usuarios(email)
 )''')
 

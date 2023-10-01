@@ -68,6 +68,19 @@
     font-weight: 400;
 }
 
+.imagem {
+    display: flex;
+}
+
+.imagem img {
+    max-width: 600px;
+    max-height: 500px;
+    width: 100%;
+    border-radius: var(--border);
+    box-shadow: var(--boxshadow);
+    align-self: center;
+}
+
 /* OPÇOES DO COMENTARIO */
 
 .banner .boxopcoes {
@@ -159,7 +172,6 @@
 
 .boxeditarpost label, input {
     width: 25%;
-    align-self: flex-start;
     padding: 5px;
 }
 
@@ -180,17 +192,48 @@
     outline: none;
 }
 
+#image {
+    display: none;
+}
+
+
+.image {
+    background-color: var(--fundo);
+    border: 1px solid var(--principal);
+    color: var(--principal);
+    height: 39px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: var(--borderMenor);
+    transition: 350ms;
+    font-size: 16px;
+}
+
+.com_foto {
+    transition: 350ms;
+    background-color: var(--principal);
+    color: white;
+}
+
+.image:hover {
+    color: white;
+    background-color: var(--principal);
+    transition: 350ms;
+}
+
+
 .boxeditarpost #enviar {
     cursor: pointer;
     background-color: var(--fundo);
     border: 1px solid var(--principal);
     width: calc(25% + 10px);
-    height: 41px;
+    height: 51px;
     padding: 0px;
     color: var(--principal);
     transition: 350ms;
     font-size: 16px;
-    align-self: flex-end;
 }
 
 .boxeditarpost #enviar:hover {

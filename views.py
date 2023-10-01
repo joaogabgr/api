@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, session, flash
 from app import app, db
 from models import Usuarios, Posts, Comentarios
-
+import base64
 
 def verificarPeril():
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
@@ -140,6 +140,11 @@ def postar():
         transplante = request.form['transplante']
         novo_post = Posts(fk_email=fk_email, nome=nome, transplante=transplante, nascimento=nascimento, nome_filho=nome_filho, comentario=comentario)
 
+    if request.files['image'].filename != '':
+        imagem = request.files['image'].read()
+        imagem = base64.b64encode(imagem)
+        novo_post.imagem = imagem
+
     db.session.add(novo_post)
     db.session.commit()
 
@@ -202,10 +207,17 @@ def editarpost():
     post.comentario = request.form['comentario']
     post.nascimento = request.form['nascimento']
     post.nome_filho = request.form['nome']
+
     if request.form['transplante'] != "":
         post.transplante = request.form['transplante']
     else:
         post.transplante = None
+
+    if request.files['image'].filename != '':
+        imagem = request.files['image'].read()
+        imagem = base64.b64encode(imagem)
+        post.imagem = imagem
+    
     db.session.commit()
     return redirect(url_for('comentario', q=id))
 

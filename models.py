@@ -15,6 +15,7 @@ class Posts(db.Model):
     nome_filho = db.Column(db.String(255), nullable=False)
     comentario = db.Column(db.Text, nullable=False)
     denuncia = db.Column(db.Boolean, default=False)
+    imagem = db.Column(db.LargeBinary, nullable=False)
 
 class Comentarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
