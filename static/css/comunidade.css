@@ -64,11 +64,14 @@ input[type='date'] {
 
 
 .image {
-    padding: 10px;
     background-color: var(--fundo);
     border: 1px solid var(--principal);
     color: var(--principal);
-    height: fit-content;
+    height: 39px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     border-radius: var(--borderMenor);
     transition: 350ms;
     font-size: 16px;
@@ -90,12 +93,13 @@ input[type='date'] {
     cursor: pointer;
     background-color: var(--fundo);
     border: 1px solid var(--principal);
-    width: 210px;
+    max-width: 210px;
     height: 41px;
     padding: 0px;
     color: var(--principal);
     transition: 350ms;
     font-size: 16px;
+    padding: 10px;
 }
 
 #enviar:hover {

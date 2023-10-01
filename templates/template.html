@@ -1,6 +1,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="../static/css/global.css" />
+<link rel="stylesheet" href="../static/css/query.css" />
 <script defer src="../static/Js/script.js"></script>
 <script src="https://kit.fontawesome.com/c6d943c8a3.js" crossorigin="anonymous"></script>
 </head>
@@ -8,11 +9,14 @@
 <body>
 <header>
     <a href="/"><img src="../static/img/rim.png" alt="Logo" /></a>
-    <nav>
+    <nav class="menuDesk">
         <a href="ircBrasil">IRC no Brasil</a>
         <a href="proadi">Proadi</a>
         <a href="comunidade">Comunidade</a>
         <a href="faq">Perguntas frequentes</a>
+    </nav>
+    <nav class="menuMobile">
+        <i class="fa-solid fa-bars"></i>
     </nav>
     <div class="btnProfile">
         <i class="fa-solid fa-circle-user"></i>
@@ -40,6 +44,12 @@
             {% endif %}
     </div>
 </header>
+<section class="menuMobileBox">
+    <a href="ircBrasil">IRC no Brasil</a>
+    <a href="proadi">Proadi</a>
+    <a href="comunidade">Comunidade</a>
+    <a href="faq">Perguntas frequentes</a>
+</section>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <ul id="messages" class="list-unstyled">

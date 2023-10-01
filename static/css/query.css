@@ -1,0 +1,261 @@
+/* QUERY PARA TEXTOS NA PAGINA INDEX E PROADI */
+
+@media (max-width: 1600px) {
+    .mySon p, .proadi p {
+    line-height: 210%;
+    } 
+
+    section p {
+        line-height: 210%;
+    }
+}
+
+@media (max-width: 1510px) {
+    .mySon p, .proadi p {
+        line-height: 190%;
+    }  
+
+    section p {
+        line-height: 190%;
+    }
+}
+
+@media (max-width: 1448px) {
+    .mySon p, .proadi p {
+        line-height: 180%;
+    }  
+
+    section p {
+        line-height: 180%;
+    }
+}
+
+@media (max-width: 1286px) {
+    .mySon div, .proadi div {
+        flex-direction: column-reverse;
+        margin-top: 0;
+
+    }
+    
+    .mySon div p, .proadi div p {
+        width: 100%;
+    }
+    
+    .mySon div img, .proadi div img {
+        align-self: center;
+        margin-bottom: 30px;
+    }
+
+}
+
+/* HEADER */
+
+@media (max-width: 878px) {
+    header a{
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 820px) {
+    header a{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 760px) {
+    header nav{
+        display: none;
+    }
+
+    .menuMobile {
+        display: flex;
+    }
+}
+
+@media (min-width: 760px) {
+    .menuMobileBox.ativo {
+        display: none;
+    }
+
+}
+
+@media (max-width: 483px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    section img {
+        height: 250px;
+    }
+
+    section p {
+        line-height: 150%;
+        text-align: start;
+    }
+}
+
+@media (max-width: 386px) {
+    h1 {
+        font-size: 35px;
+    }
+
+    section img {
+        height: 180px;
+    }
+}
+
+/* NAV MOBILE */
+
+@media (max-width: 568px) {
+    .menuMobileBox {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menuMobileBox a {
+        margin: 10px 0;
+    }
+    
+}
+
+/* FOOTER */
+
+@media (max-width: 590px) {
+    footer {
+        flex-direction: column;
+    }
+
+    footer img {
+        margin-top: 10px;
+    }
+
+    footer > p, footer .sigaMe {
+        margin-bottom: 10px;
+    }
+}
+
+/* COMUNIDADE */
+
+@media (max-width: 880px) {
+    .publicar .publicarInput {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .publicar .publicarInput input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .publicar .publicarInput input:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 476px) {
+    .publicar .publicarEnviar {
+        flex-direction: column;
+    }
+
+    .publicarEnviar label {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .publicarEnviar #enviar {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 772px) {
+    .banner .infopost {
+        flex-wrap: wrap;
+    }
+
+    .banner .infopost p {
+        margin-right: 10px;
+    }
+
+    .line {
+        display: none;
+    }
+}
+
+/* COMENTARIO */
+
+@media (max-width: 822px) {
+    .banner .info_filho {
+        flex-wrap: wrap;
+    }
+
+    .banner .info_filho p {
+        margin-right: 10px;
+    }
+
+    .lineC {
+        display: none;
+    }
+}
+
+@media (max-width: 482px) {
+    .banner .usuario {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner .usuario p {
+        margin: 0;
+        margin-top: 10px;
+        text-align: center;
+    }   
+    .banner .usuario .option {
+        margin-left: 0;
+    }
+
+    .titulo .fechar {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+    .banner .boxopcoes {
+        justify-content: space-evenly;
+    }
+}
+
+/* ADMIN */
+
+@media (max-width: 760px) {
+    section.admin input, .admin form  #enviar {
+        width: 100%;
+    }
+    .denuncia {
+        align-items: center;
+    }
+
+    .denuncia div {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .denuncia div a {
+        width: 100%;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .denuncia div a:last-child {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 305px) {
+    h2 {
+        font-size: 25px;
+    }
+
+    .denuncia p{
+        text-align: start;
+        font-size: 17px;
+    }
+}

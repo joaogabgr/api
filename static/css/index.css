@@ -1,9 +1,5 @@
 /* CONFIG GERAIS DAS SECTIONS */
 
-:root {
-    --marginColorido: 40px 120px;
-}
-
 section div {
     display: flex;
     justify-content: space-between;

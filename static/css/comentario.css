@@ -75,7 +75,6 @@
     background-color: var(--fundo);
     box-shadow: var(--boxshadow);
     border: var(--border);
-    margin-left: 46px;
     user-select: none;
 }
 
@@ -202,11 +201,7 @@
 
 /* LINHA DE INFORMAÇÕES DO FILHO */
 
-.info_filho {
-    margin-left: 46px;
-}
-
-.info_filho .line {
+.info_filho .lineC {
     height: 18px;
     width: 2px;
     border-radius: var(--border);
@@ -236,70 +231,7 @@
 .comentario {
     text-align: justify;
     line-height: 150%;
-    margin-left: 46px;
-}
-
-.titulo i {
-    font-size: 25px;
-    padding: 10px;
-    background-color: var(--fundo);
-    width: 25px;
-    text-align: center;
-    border-radius: 50%;
-    box-shadow: var(--boxshadow);
-    color: var(--principal);
-    cursor: pointer;
-}
-
-/* LINHA DE NOME DO USUARIO */
-
-.usuario i {
-    background-color: white;
-    padding: 10px;
-    border-radius: 50%;
-}
-
-.usuario p {
-    margin-left: 10px;
-    color: var(--letra);
-    font-family: Nunito Sans;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-}
-
-/* LINHA DE INFORMAÇÕES DO FILHO */
-
-.info_filho .line {
-    height: 18px;
-    width: 2px;
-    border-radius: var(--border);
-    background-color: var(--principal);
-    margin: var(--marginLine);
-}
-
-.info_filho p{
-    font-family: Nunito Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    color: var(--letra);
-}
-
-.info_filho .dado {
-    font-family: Nunito Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    color: var(--letra);
-    margin-left: 5px;
-}
-
-/* texto */
-
-.comentario {
-    text-align: justify;
-    line-height: 150%;
+    overflow-wrap: anywhere;
 }
 
 /* FORMS COMENTARIOS */
@@ -333,7 +265,7 @@ textarea:focus-visible {
     background-color: var(--fundo);
     border: 1px solid var(--principal);
     border-radius: var(--borderMenor);
-    width: 210px;
+    width: 100px;
     height: 41px;
     padding: 0px;
     color: var(--principal);

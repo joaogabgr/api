@@ -27,12 +27,12 @@
                 <section class="publicar">
                     <form action="postar" method="post">
                         <textarea required="required" placeholder="Escreva a história do seu filho aqui *   " name="comentario" id="comentario"></textarea>
-                        <div>
+                        <div class="publicarInput">
                             <input required="required" placeholder="Nome do seu filho *" type="text" name="nome" id="nome">
                             <input required="required" placeholder="Data de nascimento *" type="text" onfocus="(this.type = 'date')" name="nascimento" id="nascimento">
                             <input placeholder="Data do transplante" type="text" onfocus="(this.type = 'date')" value="" name="transplante" id="transplante">
                         </div>
-                        <div>
+                        <div class="publicarEnviar">
                             <label class="image" for="image">Enviar fotos</label>
                             <input type="file" accept="image/*" name="image" id="image">
                             <input type="submit" name="enviar" id="enviar">
@@ -48,15 +48,15 @@
                     <i class="fa-solid fa-user-large"></i>
                     <p class="post_nome">{{ post.nome.title() }}</p>
                 </div>
-                <div>
-                    <p>História do(a):</p><span class="dado">{{ post.nome_filho.title() }}</span>
+                <div class="infopost">
+                    <p>História do(a):<span class="dado">{{ post.nome_filho.title() }}</span></p>
                     <span class="line"></span>
-                    <p>Nascimento: </p><span class="dado">{{ post.nascimento.strftime('%d/%m/%Y')}}</span>
+                    <p>Nascimento: <span class="dado">{{ post.nascimento.strftime('%d/%m/%Y')}}</span></p>
                     {% if post.transplante == None %}
 
                     {% else %}
                     <span class="line"></span>
-                    <p>Transplante: </p><span class="dado">{{ post.transplante.strftime('%d/%m/%Y') }}</span>
+                    <p>Transplante: <span class="dado">{{ post.transplante.strftime('%d/%m/%Y') }}</span></p>
                     {% endif %}
                 </div>
             </form>
