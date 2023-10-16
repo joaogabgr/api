@@ -86,15 +86,15 @@ header {
     justify-content: space-between;
     width: 90%;
 /*Positioning stuff*/
-    position: fixed;
-    top: 0;
+    /* position: fixed;
+    top: 0; */
 /*Box model stuff*/
     padding: 0 5vw;
     padding-top: 6px;
     border-bottom: 5px solid var(--principal);
     background-color: rgba(250, 250, 250, 0.4);
 /*Miscellaneous*/
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     user-select: none;
     z-index: 1;
 }
